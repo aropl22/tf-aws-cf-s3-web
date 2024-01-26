@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = var.s3-logs
+    bucket          = "${aws_s3_bucket.s3-logs.id}.s3.amazonaws.com"
     prefix          = "cf-web"
   }
 
@@ -98,7 +98,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   restrictions {
     geo_restriction {
       restriction_type = "whitelist"
-      locations        = ["US", "CA", "GB", "DE"]
+      locations        = ["US", "CA"]
     }
   }
 
@@ -110,4 +110,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+
+  depends_on = [aws_s3_bucket.s3-web, aws_s3_bucket.s3-logs]
 }
