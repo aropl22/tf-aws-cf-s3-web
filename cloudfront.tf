@@ -20,13 +20,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${var.s3-logs}"
+    bucket          = var.s3-logs
     prefix          = "cf-web"
   }
 
   #aliases = var.aliases    # To add an alternate domain name (CNAME) to a CloudFront distribution,
-                            # you must attach a trusted certificate that validates your authorization to use 
-                            # the domain name.
+  # you must attach a trusted certificate that validates your authorization to use 
+  # the domain name.
 
   default_cache_behavior {
     #allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"] 
@@ -104,7 +104,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   tags = {
     managed_by = local.name_managed_by
-    stack = local.name_stack
+    stack      = local.name_stack
   }
 
   viewer_certificate {
