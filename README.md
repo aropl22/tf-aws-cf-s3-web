@@ -2,10 +2,10 @@
 
 The code deployes a static website on AWS:
 
--s3 bucket with static website hosting
--s3 cloud front logs bucket
--Cloud Front distribution  
--Origin Access Control Policy 
+-s3 bucket with static website hosting  
+-s3 cloud front logs bucket  
+-Cloud Front distribution    
+-Origin Access Control Policy   
 
 ![GitHub Image](/img/cf-s3-web.jpg)
 
@@ -67,4 +67,4 @@ aliases = ["EXAMPLE.COM"] # cf aliases
 
 - account_id
 - cloudfront_distribution_id
-- http = "http://CLOUDFRONT_DOMAIN.cloudfront.net/"
+- http = "http://cloudfront_domain.cloudfront.net/"
