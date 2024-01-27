@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   # Cache behavior with precedence 0
   ordered_cache_behavior {
-    path_pattern     = "/content/immutable/*"
+    path_pattern     = "/images/immutable/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = aws_cloudfront_origin_access_control.s3-web-origin.id
@@ -73,7 +73,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   # Cache behavior with precedence 1
   ordered_cache_behavior {
-    path_pattern     = "/content/*"
+    path_pattern     = "/images/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = aws_cloudfront_origin_access_control.s3-web-origin.id
@@ -100,6 +100,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       restriction_type = "whitelist"
       locations        = ["US", "CA"]
     }
+  }
+
+  custom_error_response {
+    error_code = 404
+    response_code = 404
+    response_page_path = "/error.html"
+    error_caching_min_ttl = 300
   }
 
   tags = {
