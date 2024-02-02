@@ -6,6 +6,10 @@ The code deployes a static website on AWS:
 -s3 cloud front logs bucket  
 -Cloud Front distribution    
 -Origin Access Control Policy   
+-Route53 DNS zone and A records  
+-AWS Certificate Manager  
+-SSL Certificate  
+
 
 ![GitHub Image](/img/cf-s3-web.jpg)
 
@@ -65,6 +69,7 @@ aliases = ["EXAMPLE.COM"] # cf aliases
 
 ## Outputs:
 
-- account_id
-- cloudfront_distribution_id
-- http = "http://cloudfront_domain.cloudfront.net/"
+- account_id  
+- cloudfront_distribution_id  
+- http = "http://cloudfront_domain.cloudfront.net/"  
+- https = "https://domain_name/  
