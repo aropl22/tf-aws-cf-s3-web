@@ -11,7 +11,10 @@ The code deployes a static website on AWS:
 -SSL Certificate  
 
 
+
+
 ![GitHub Image](/img/cf-s3-web.jpg)
+
 
 
 Must define backend and AWS access keys
