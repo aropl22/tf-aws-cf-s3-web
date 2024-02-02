@@ -3,20 +3,14 @@ variable "domain_name" {
   type        = string
 }
 
-variable "name_managed_by" {
-  description = "Managed By"
-  type        = string
-  default      = "Terraform"
+variable "dns_tags" {
+  type = map(any)
 }
 
-variable "name_stack" {
-  description = "Name of the Stack"
-  type        = string
-  default = "Dev"
+variable "record_domain_name" {
+  type = string
 }
 
-variable "dns_zone_config" {
-  description = "Create new DNS zone"
-  type        = bool
-  default     = false
-} 
+variable "record_zone_id" {
+  type = string
+}

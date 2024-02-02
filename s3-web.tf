@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "s3-web" {
   bucket        = var.domain_name
   force_destroy = true #all objects should be deleted from the bucket when the bucket is destroyed 
-  #so that the bucket can be destroyed without error
+                       #so that the bucket can be destroyed without error
   tags = {
     ManagedBy = "${local.name_managed_by}"
     Stack     = local.name_stack
