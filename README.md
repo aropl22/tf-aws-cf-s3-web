@@ -7,7 +7,10 @@ The code deployes a static website on AWS:
 -Cloud Front distribution    
 -Origin Access Control Policy   
 
+
+
 ![GitHub Image](/img/cf-s3-web.jpg)
+
 
 
 Must define backend and AWS access keys
