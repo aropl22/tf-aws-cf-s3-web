@@ -24,7 +24,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     prefix          = "cf-web"
   }
 
-  #aliases = var.aliases    # To add an alternate domain name (CNAME) to a CloudFront distribution,
+  aliases = var.aliases # To add an alternate domain name (CNAME) to a CloudFront distribution,
   # you must attach a trusted certificate that validates your authorization to use 
   # the domain name.
 
@@ -115,7 +115,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    cloudfront_default_certificate = false
+    acm_certificate_arn            = module.certificate.certificate_arn
+    ssl_support_method             = "sni-only" # (vip, sni-only or static-ip) vip couses couldfront to use a dedicated IP addresses and incur
+    # extra charges $600
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   depends_on = [aws_s3_bucket.s3-web, aws_s3_bucket.s3-logs]
