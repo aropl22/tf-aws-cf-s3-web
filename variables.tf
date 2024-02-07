@@ -12,6 +12,7 @@ variable "default_tags" {
   type = map(any)
   default = {
     managed_by : "Terraform",
-    stack : "test"
+    stack : "test",
+    project : "1"
   }
 }
